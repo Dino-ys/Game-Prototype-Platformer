@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4tcchabwie18"]
+
+[ext_resource type="Script" path="res://code/player.gd" id="1_iflgi"]
+[ext_resource type="Resource" uid="uid://dmklyurd1jcpl" path="res://code/Default_Movement.tres" id="2_5rfjc"]
+[ext_resource type="Texture2D" uid="uid://fx3hpr07yovr" path="res://Sprites/brbs6ebhsr2b1.png" id="3_87nce"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crx2y"]
+size = Vector2(15.1256, 10.3233)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysskm"]
+radius = 7.12555
+height = 14.2511
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_suvnp"]
+radius = 10.3244
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.35602, 1.51379)
+collision_layer = 2
+floor_constant_speed = true
+floor_max_angle = 0.993092
+floor_snap_length = 5.0
+safe_margin = 0.1
+script = ExtResource("1_iflgi")
+movement_data = ExtResource("2_5rfjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(0.0157154, 0.00885109)
+texture = ExtResource("3_87nce")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.437241, -4.10212e-07)
+shape = SubResource("RectangleShape2D_crx2y")
+
+[node name="GraceJumpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -25.3307)
+position_smoothing_enabled = true
+position_smoothing_speed = 9.0
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+shape = SubResource("CapsuleShape2D_ysskm")
+
+[node name="SenseiDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseiDetector"]
+shape = SubResource("CircleShape2D_suvnp")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://ulbe0l2w4yn8"]
+
+[ext_resource type="Texture2D" uid="uid://ffqqcd3i6dg1" path="res://Sprites/senseicp.webp" id="1_uvvyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdwem"]
+
+[node name="Sensei" type="Node2D"]
+position = Vector2(35, 62)
+scale = Vector2(0.0330685, 0.018219)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uvvyu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(-111.324, 85.7238)
+shape = SubResource("CapsuleShape2D_mdwem")
+disabled = true
+
+[node name="Dialogues" type="Node" parent="."]
+
+[node name="Label1" type="Label" parent="Dialogues"]
+texture_filter = 1
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 83.0
+offset_bottom = 51.0
+scale = Vector2(1.47352, 0.715473)
+size_flags_horizontal = 0
+text = "Hey there penguin"
+metadata/_edit_use_anchors_ = true

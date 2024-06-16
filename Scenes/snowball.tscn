@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0uha2qjtd2a8"]
+
+[ext_resource type="Texture2D" uid="uid://y2lfeml0j5vf" path="res://Sprites/snowball-one.png" id="1_1wmer"]
+[ext_resource type="Script" path="res://code/snowball.gd" id="1_emh3y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qgdk"]
+radius = 144.0
+height = 288.0
+
+[node name="Snowball" type="Area2D" groups=["Snowballs"]]
+scale = Vector2(0.0282353, 0.0307087)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_emh3y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1wmer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 2
+shape = SubResource("CapsuleShape2D_2qgdk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

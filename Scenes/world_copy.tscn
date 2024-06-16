@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bejys6ll8wdih"]
+
+[ext_resource type="Script" path="res://code/world.gd" id="1_lgbw6"]
+[ext_resource type="PackedScene" uid="uid://c4tcchabwie18" path="res://Scenes/player.tscn" id="2_y4jiw"]
+[ext_resource type="PackedScene" uid="uid://d0uha2qjtd2a8" path="res://Scenes/snowball.tscn" id="3_m2wjt"]
+[ext_resource type="PackedScene" uid="uid://cah631nahwnkn" path="res://Scenes/spike.tscn" id="4_6kgg7"]
+[ext_resource type="PackedScene" uid="uid://cse1ruc2xxe35" path="res://Scenes/LevelCompleted.tscn" id="5_0ls6a"]
+[ext_resource type="PackedScene" uid="uid://dq7ji06xtmj6m" path="res://Scenes/level_tile_map.tscn" id="6_5pgrh"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lgbw6")
+
+[node name="Player" parent="." instance=ExtResource("2_y4jiw")]
+position = Vector2(40, 40)
+scale = Vector2(0.667102, 0.420354)
+
+[node name="Snowballs" type="Node" parent="."]
+
+[node name="Snowball" parent="Snowballs" instance=ExtResource("3_m2wjt")]
+position = Vector2(167, 74)
+
+[node name="Snowball2" parent="Snowballs" instance=ExtResource("3_m2wjt")]
+position = Vector2(43, -9.99999)
+
+[node name="Snowball3" parent="Snowballs" instance=ExtResource("3_m2wjt")]
+position = Vector2(264, -89)
+
+[node name="Snowball4" parent="Snowballs" instance=ExtResource("3_m2wjt")]
+position = Vector2(215, 75)
+
+[node name="Snowball5" parent="Snowballs" instance=ExtResource("3_m2wjt")]
+position = Vector2(103, 75)
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Spikes" parent="Spikes" instance=ExtResource("4_6kgg7")]
+position = Vector2(144, 113)
+
+[node name="Spikes2" parent="Spikes" instance=ExtResource("4_6kgg7")]
+position = Vector2(225, 113)
+
+[node name="Spikes3" parent="Spikes" instance=ExtResource("4_6kgg7")]
+position = Vector2(241, 113)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Spikes"]
+
+[node name="LevelCompleted" parent="Spikes/CanvasLayer" instance=ExtResource("5_0ls6a")]
+visible = false
+
+[node name="LevelTileMap" parent="." instance=ExtResource("6_5pgrh")]
+layer_0/name = "Base"
+layer_0/tile_data = PackedInt32Array(327682, 0, 1, 393218, 0, 1, 458754, 0, 2, 458755, 65536, 2, 458756, 65536, 2, 393219, 65536, 1, 262147, 65536, 0, 327683, 65536, 1, 327684, 327680, 2, 393220, 65536, 1, 327686, 65536, 0, 393224, 131072, 0, 393223, 327680, 2, 393222, 65536, 1, 393221, 65536, 1, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458760, 327680, 3, 393226, 0, 1, 458762, 393216, 3, 458761, 65536, 3, 458763, 65536, 2, 393227, 65536, 1, 327692, 65536, 0, 327693, 131072, 0, 393229, 131072, 1, 458765, 327680, 3, 458764, 65536, 2, 393228, 65536, 1, 458766, 65536, 3, 458767, 65536, 3, 458768, 458752, 3, 393232, 196608, 1, 327696, 196608, 1, 262160, 196608, 1, 196624, 196608, 1, 131088, 196608, 1, 65552, 196608, 1, 16, 196608, 1, 131085, 196608, 2, 65549, 196608, 1, 13, 196608, 1, -65523, 196608, 1, -131059, 196608, 1, -196595, 196608, 1, -262131, 196608, 1, -65520, 196608, 1, -131056, 196608, 1, -196592, 196608, 1, -262128, 196608, 1, -327664, 196608, 0, -327667, 196608, 0, 327691, 65536, 0, 262146, 0, 0, 327685, 65536, 1)
+layer_1/name = "Slope"
+layer_1/tile_data = PackedInt32Array(262149, 196610, 0, 262148, 131074, 0, 327687, 131074, 0, 327688, 196610, 0, 327690, 1, 0, 327684, 65536, 1, 393223, 65536, 1, 393224, 131072, 1, 327685, 65538, 0)

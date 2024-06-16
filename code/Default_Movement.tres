@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerMovementData" load_steps=2 format=3 uid="uid://dmklyurd1jcpl"]
+
+[ext_resource type="Script" path="res://code/PlayerMovementData.gd" id="1_riaxo"]
+
+[resource]
+script = ExtResource("1_riaxo")
+SPEED = 100.0
+ACCELERATION = 1000
+JUMP_VELOCITY = -300.0
+FRICTION = 600
+gravity_scale = 1.0
+air_resistance = 200.0
+air_acceleration = 400
